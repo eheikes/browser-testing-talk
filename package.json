@@ -1,0 +1,28 @@
+{
+  "name": "browser-testing-talk",
+  "version": "1.0.0",
+  "description": "Talk: Automate Your Browser Testing",
+  "private": true,
+  "author": "Eric Heikes <eheikes@gmail.com>",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/eheikes/browser-testing-talk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eheikes/browser-testing-talk.git"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run flowtime && npm run jade",
+    "clean": "rimraf dist",
+    "flowtime": "node bin/copy-flowtime.js",
+    "jade": "mkdirp dist && jade --pretty --out dist index.jade"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "Flowtime.js": "github:marcolago/flowtime.js",
+    "glob": "^7.0.3",
+    "jade": "^1.11.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.2"
+  }
+}
