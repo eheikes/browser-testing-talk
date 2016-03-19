@@ -12,7 +12,8 @@ var files = {
   fonts: globSync('assets/fonts/*', { cwd: 'node_modules/Flowtime.js/' }),
   js: [
     'assets/js/prism.js',
-    'js/flowtime.min.js',
+    'js/brav1toolbox.js',
+    'js/flowtime.js',
   ]
 };
 
