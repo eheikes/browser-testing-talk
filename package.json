@@ -11,7 +11,7 @@
     "url": "https://github.com/eheikes/browser-testing-talk.git"
   },
   "scripts": {
-    "assets": "mkdirp dist && cp -R img video dist/",
+    "assets": "mkdirp dist/css && cp -R img video dist/ && cp talk.css dist/css/",
     "build": "npm run clean && npm run assets && npm run flowtime && npm run jade",
     "clean": "rimraf dist",
     "flowtime": "node bin/copy-flowtime.js",
