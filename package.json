@@ -10,20 +10,16 @@
     "type": "git",
     "url": "https://github.com/eheikes/browser-testing-talk.git"
   },
-  "scripts": {
-    "assets": "mkdirp dist/css && cp -R img video dist/ && cp talk.css dist/css/",
-    "build": "npm run clean && npm run assets && npm run flowtime && npm run jade",
-    "clean": "rimraf dist",
-    "flowtime": "node bin/copy-flowtime.js",
-    "jade": "mkdirp dist && jade --pretty --out dist index.jade"
-  },
-  "dependencies": {
-  },
+  "scripts": {},
+  "dependencies": {},
   "devDependencies": {
     "Flowtime.js": "github:marcolago/flowtime.js",
     "glob": "^7.0.3",
+    "gulp": "^3.9.1",
+    "gulp-jade": "^1.1.0",
     "jade": "^1.11.0",
     "mkdirp": "^0.5.1",
-    "rimraf": "^2.5.2"
+    "rimraf": "^2.5.2",
+    "run-sequence": "^1.1.5"
   }
 }
