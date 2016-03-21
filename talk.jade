@@ -31,50 +31,43 @@
       Mention hiring -- front-end, back-end DS, iOS & Android native, infrastructure/devops, product -- smart people
 .ft-section(data-id="problem")
   .ft-page(data-id="sucks")
-    .stack-center
-      .stacked-center
+    .column-container
+      .column
         h1 Writing tests sucks...
-        .ft-fragment
-          p Writing tests is a chore.
-          p It's hard to get developers to write tests, #[br] especially when starting a new project or feature.
-    //
-      Writing tests is a chore.
-    //
-      It's *very* hard to get developers to write tests for their code
-      (at least in my experience).
-    //
-      Especially when you're starting a new project, or a customer is asking
-      for a new feature, and you want to get to MVP as soon as possible.
-  .ft-page(data-id="necessary")
-    .stack-center
-      .stacked-center
+        p Writing tests is a chore.
+        p It's hard to get developers to write tests, especially when starting a new project or feature.
+        //
+          Writing tests is a chore.
+        //
+          It's *very* hard to get developers to write tests for their code
+          (at least in my experience).
+        //
+          Especially when you're starting a new project, or a customer is asking
+          for a new feature, and you want to get to MVP as soon as possible.
+      .column.ft-fragment
         h1 ...but it's still better than no tests.
-        ul.ft-fragment
+        ul
           li You want your website to be available and working for you customers.
           li You don't want to be caught by surprise.
           li But you don't want to spend time manually testing your site.
-    //
-      *But* everyone agrees it should be done.
-    //
-      Whether you have a web app, or a Wordpress site, or even just a static
-      informational website, you want to make sure that it's available
-      and it works for your customers.
-    //
-      You don't want to find out that a change you made last week broke
-      your e-commerce site and nobody has been able to checkout since.
-    //
-      But you also don't want to spend time pulling up your site
-      after every change and running through all the affected workflows
-      and features in various browsers. That's very tedious and error-prone.
+        //
+          *But* everyone agrees it should be done.
+        //
+          Whether you have a web app, or a Wordpress site, or even just a static
+          informational website, you want to make sure that it's available
+          and it works for your customers.
+        //
+          You don't want to find out that a change you made last week broke
+          your e-commerce site and nobody has been able to checkout since.
+        //
+          But you also don't want to spend time pulling up your site
+          after every change and running through all the affected workflows
+          and features in various browsers. That's very tedious and error-prone.
   .ft-page(data-id="painless")
     .stack-center
       .stacked-center
-        h1 So how can we make this as painless as possible?
-        .column-container
-          .column
-            img.ft-fragment(src="img/sad-cat.jpg")
-          .column
-            img.ft-fragment(src="img/good-news.jpg")
+        h1 How can we make this #[br] as painless as possible?
+        img.ft-fragment(src="img/good-news.jpg", style={display: "inline-block", height: "18rem"})
     // Bad news: You still have to write tests.
     // Good news: The computer does all the grunt work for you.
   .ft-page(data-id="example")
