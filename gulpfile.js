@@ -1,6 +1,7 @@
 'use strict';
 
 var connect = require('connect');
+var ghPages = require('gulp-gh-pages');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var jade = require('gulp-jade');
@@ -53,6 +54,11 @@ gulp.task('copy:images', function() {
 gulp.task('copy:video', function() {
   return gulp.src('video/*')
     .pipe(gulp.dest(buildPath + '/video'));
+});
+
+gulp.task('deploy', function() {
+  return gulp.src(buildPath + '/**/*')
+    .pipe(ghPages());
 });
 
 gulp.task('jade', function() {

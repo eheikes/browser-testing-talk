@@ -15,3 +15,4 @@ The gulp tasks are:
 * `gulp` or `gulp default` -- Compiles the presentation into the `dist` folder
 * `gulp serve` -- Starts a local server at [http://localhost:8080](http://localhost:8080/) to serve the presentation
 * `gulp test` -- Runs the example E2E tests
+* `gulp deploy` -- Deploys the presentation to the Github Page
