@@ -4,7 +4,7 @@
 
 This was a talk given at the [2016 Des Moines Web Geeks Social Event](http://www.dsmwebgeeks.com/2016/03/12/annual-social-event/).
 
-The presentation is available pre-built in the [`dist` folder](dist/).
+The presentation can be viewed at [eheikes.github.io/browser-testing-talk](http://eheikes.github.io/browser-testing-talk/), or from the [`dist` folder](dist/) in this repository.
 
 ## Local Build
 
