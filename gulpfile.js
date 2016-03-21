@@ -10,6 +10,7 @@ var selenium = require('selenium-standalone');
 
 var buildPath = './dist';
 
+var opts = require('minimist')(process.argv.slice(2));
 var seleniumProcess = null; // for tracking the selenium process
 
 gulp.task('clean', function(done) {
@@ -84,9 +85,14 @@ gulp.task('serve', function() {
 
 gulp.task('test', ['selenium:start', 'serve'], function(done) {
   var spawn = require('child_process').spawn;
-  var nw = spawn('./node_modules/.bin/nightwatch', [
-    '--config', 'test/nightwatch.conf.js'
-  ]);
+  var nwConfigFile = './test/nightwatch.conf.js';
+  var nwArgs = [
+    '--config', nwConfigFile
+  ];
+  if (opts.env === 'saucelabs') {
+    nwArgs.push('--env', 'saucelabs');
+  }
+  var nw = spawn('./node_modules/.bin/nightwatch', nwArgs);
   nw.stdout.on('data', function(data) {
     console.log(data.toString());
   });
