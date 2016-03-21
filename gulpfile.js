@@ -1,11 +1,16 @@
 'use strict';
 
+var connect = require('connect');
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var jade = require('gulp-jade');
 var rimraf = require('rimraf');
 var runSequence = require('run-sequence');
+var selenium = require('selenium-standalone');
 
 var buildPath = './dist';
+
+var seleniumProcess = null; // for tracking the selenium process
 
 gulp.task('clean', function(done) {
   rimraf(buildPath, done);
@@ -55,6 +60,50 @@ gulp.task('jade', function() {
       pretty: true
     }))
     .pipe(gulp.dest(buildPath));
+});
+
+gulp.task('selenium:install', function(done) {
+  selenium.install(done);
+});
+
+gulp.task('selenium:start', ['selenium:install'], function(done) {
+  selenium.start(function(err, process) {
+    seleniumProcess = err ? null : process;
+    done();
+  });
+});
+
+gulp.task('serve', function() {
+  var http = require('http');
+  var serveStatic = require('serve-static');
+  var app = connect();
+  app.use(serveStatic(buildPath, { index: ['index.html'] }));
+  http.createServer(app).listen(8080);
+  gutil.log(gutil.colors.green('Listening at http://localhost:8080'));
+});
+
+gulp.task('test', ['selenium:start', 'serve'], function(done) {
+  var spawn = require('child_process').spawn;
+  var nw = spawn('./node_modules/.bin/nightwatch', [
+    '--config', 'test/nightwatch.conf.js'
+  ]);
+  nw.stdout.on('data', function(data) {
+    console.log(data.toString());
+  });
+  nw.stderr.on('data', function(data) {
+    console.log(data.toString());
+  });
+  nw.on('close', function(code) {
+    gutil.log('Nightwatch process exited with code', code);
+    if (seleniumProcess) {
+      seleniumProcess.kill();
+      seleniumProcess = null;
+    }
+    done();
+  });
+  nw.on('error', function(err) {
+    gutil.log('Failed to start Nightwatch process', err);
+  });
 });
 
 gulp.task('default', ['build']);

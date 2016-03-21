@@ -14,12 +14,17 @@
   "dependencies": {},
   "devDependencies": {
     "Flowtime.js": "github:marcolago/flowtime.js",
+    "connect": "^3.4.1",
     "glob": "^7.0.3",
     "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0",
+    "gulp-util": "^3.0.7",
     "jade": "^1.11.0",
     "mkdirp": "^0.5.1",
+    "nightwatch": "^0.8.18",
     "rimraf": "^2.5.2",
-    "run-sequence": "^1.1.5"
+    "run-sequence": "^1.1.5",
+    "selenium-standalone": "^5.0.0",
+    "serve-static": "^1.10.2"
   }
 }
