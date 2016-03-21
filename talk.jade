@@ -1,3 +1,402 @@
-.ft-section
-  .ft-page Section 1 / Page 1
-  .ft-page Section 1 / Page 2
+.ft-section(data-id="intro")
+  .ft-page(data-id="title")
+    .stack-center
+      .stacked-center
+        h1.bright Automate Your Browser Testing
+  .ft-page(data-id="author")
+    .stack-center
+      .stacked-center
+        h1 About Me
+        .avatar(style={"background-image": "url('img/eric-heikes.jpg')"})
+  .ft-page(data-id="banno")
+    .stack-center
+      .stacked-center
+        img(src="img/jha-logo.png", style={width: "400px"})
+    .stack-center.ft-fragment
+      img.stacked-center(src="img/banno-header.png")
+    .stack-center.ft-fragment.shy
+      img.stacked-center(src="img/banno-marketing.png")
+    .stack-center.ft-fragment.shy
+      img.stacked-center(src="img/banno-people.png")
+    .stack-center.ft-fragment.shy
+      img.stacked-center(src="img/banno-content.png")
+    .stack-center.ft-fragment.shy
+      img.stacked-center(src="img/banno-support.png")
+    .stack-center.ft-fragment.shy
+      img.stacked-center(src="img/banno-reports.png")
+    .stack-center
+      .stacked-center
+    //
+      mainly DSM & CF, but distributed team
+      Mention hiring -- front-end, back-end DS, iOS & Android native, infrastructure/devops, product -- smart people
+.ft-section(data-id="problem")
+  .ft-page(data-id="sucks")
+    .stack-center
+      .stacked-center
+        h1 Writing tests sucks...
+        .ft-fragment
+          p Writing tests is a chore.
+          p It's hard to get developers to write tests, #[br] especially when starting a new project or feature.
+    //
+      Writing tests is a chore.
+    //
+      It's *very* hard to get developers to write tests for their code
+      (at least in my experience).
+    //
+      Especially when you're starting a new project, or a customer is asking
+      for a new feature, and you want to get to MVP as soon as possible.
+  .ft-page(data-id="necessary")
+    .stack-center
+      .stacked-center
+        h1 ...but it's still better than no tests.
+        ul.ft-fragment
+          li You want your website to be available and working for you customers.
+          li You don't want to be caught by surprise.
+          li But you don't want to spend time manually testing your site.
+    //
+      *But* everyone agrees it should be done.
+    //
+      Whether you have a web app, or a Wordpress site, or even just a static
+      informational website, you want to make sure that it's available
+      and it works for your customers.
+    //
+      You don't want to find out that a change you made last week broke
+      your e-commerce site and nobody has been able to checkout since.
+    //
+      But you also don't want to spend time pulling up your site
+      after every change and running through all the affected workflows
+      and features in various browsers. That's very tedious and error-prone.
+  .ft-page(data-id="painless")
+    .stack-center
+      .stacked-center
+        h1 So how can we make this as painless as possible?
+        .column-container
+          .column
+            img.ft-fragment(src="img/sad-cat.jpg")
+          .column
+            img.ft-fragment(src="img/good-news.jpg")
+    // Bad news: You still have to write tests.
+    // Good news: The computer does all the grunt work for you.
+  .ft-page(data-id="example")
+    .stack-center
+      h1.stacked-center A Quick Story
+      //
+        When I started at Banno, the initial administrative apps had been built,
+        but there wasn't much in the way of front-end testing.
+    .stack-center.ft-fragment.shy
+      img.stacked-center(src="img/aps-repo.png")
+      //
+        The main library that was shared among the apps, with the common services
+        and components, had almost no test coverage.
+    .stack-center.ft-fragment.shy
+      img.stacked-center(src="img/aps-unit-tests.png")
+      //
+        Over the next 6-12 months or so, we wrote unit tests and end-to-end tests
+        for this library.
+        Nowadays it has almost full coverage.
+    .stack-center.ft-fragment.shy
+      video.stacked-center(src="video/aps-e2e-tests.mp4", controls)
+        Example of running Protractor E2E tests
+      //
+        So now we can run 342 unit tests in under 10 seconds, and all our E2E tests in
+        about 5 mins.
+      //
+        Was it a pain to write? Yes. But now every time something is added or changed,
+        it's just another small change to the tests.
+        And our confidence that new code won't cause regressions is HUGE.
+.ft-section(data-id="tooling")
+  .ft-page(data-id="nomenclature")
+    .stack-center
+      .stacked-center
+        h1 Testing Spectrum
+        ul
+          li unit testing
+          li integration testing
+          li acceptance testing
+          li end-to-end (E2E) testing
+        //
+          The nomenclature for the different types of testing seems to vary depending
+          where you are,
+          but in this talk I'm going to concentrate on what we call "end-to-end" testing.
+        //
+          Unit testing is testing the code at a very low level, where you know and have
+          access to the internals of the system.
+          Unit testing, I think, is relatively straightforward and easy to set up.
+        //
+          End-to-end testing is testing at the browser level.
+          Where your tests see the same thing a human user would see, in a real browser.
+          Because this is at this high level, E2E tests typically test actual workflows
+          & critical paths.
+        //
+          E2E tests, I think, require a bit more work to set up and get running.
+          Also, at this high level, you're able to see browser quirks in all their glory
+          (events, visual rendering, etc).
+        //
+          You should still unit testing & the others, but I'm going to focus on E2E testing.
+  .ft-page(data-id="selenium")
+    .stack-center
+      .stacked-center
+        img(src="img/selenium-logo.png", style={display: "inline-block"})
+        h1 Selenium WebDriver
+        // is actually 2 merged projects
+        p.ft-fragment A common interface for communicating with browsers
+        // as you saw, just starts an instance of the browser and runs your tests using the WebDriver API.
+        ul.ft-fragment
+          li Runs on Windows/Mac/Linux
+          li Write in Java, C#, Perl, PHP, Python, Ruby, and more
+          li Supports Firefox, Chrome, Opera, Safari 5.1+, IE7-11, Edge
+  .ft-page(data-id="frameworks")
+    .stack-center
+      .stacked-center
+        h1 Testing Frameworks
+        .column-container
+          .column
+            ul
+              li.ft-fragment.step
+                a(href="https://github.com/paypal/nemo") Nemo
+              li.ft-fragment
+                a(href="http://nightwatchjs.org/") Nightwatch.js
+              li.ft-fragment
+                a(href="https://angular.github.io/protractor/") Protractor
+              li.ft-fragment.step
+                a(href="http://webdriver.io/") webdriver.io
+              li.ft-fragment.step
+                a(href="https://jnicklas.github.io/capybara/") Capybara
+              li.ft-fragment.step JUnit, TestNG
+              li.ft-fragment.step NUnit
+              li.ft-fragment.step
+                a(href="https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/") Selenium IDE
+          .column.ft-fragment.step
+            img(src="img/selenium-ide.gif")
+          .ft-fragment
+            // nothing
+    // Protractor & Nightwatch I've used for personal & professional projects
+  .ft-page(data-id="nightwatch")
+    .stack-center
+      .stacked-center
+        img(src="img/nightwatch-logo.png", style={display: "inline-block"})
+        h1 Nightwatch
+        // Why NW?
+        ul
+          li NodeJS
+          li All-in-one
+          li Mature
+          li Fairly popular
+          li Decent documentation
+          li Easy-ish to get started
+    // Any tests is better than no test. Choose a tool that looks good and start.
+    // Testing tools tend to follow same pattern.
+.ft-section(data-id="e2e")
+  .ft-page(data-id="browsers")
+    .stack-center
+      .stacked-center
+        h1 Step 1
+        p.ft-fragment Install browsers you want to test against.
+  .ft-page(data-id="selenium-setup")
+    .stack-center
+      .stacked-center
+        h1 Selenium Setup
+        pre
+          code.language-javascript.
+            var selenium = require('selenium-standalone');
+
+            var seleniumProcess = null; // for tracking the selenium process
+
+            gulp.task('selenium:install', function(done) {
+              selenium.install(done);
+            });
+
+            gulp.task('selenium:start', ['selenium:install'], function(done) {
+              selenium.start(function(err, process) {
+                seleniumProcess = err ? null : process;
+                done();
+              });
+            });
+  .ft-page(data-id="nightwatch-setup")
+    .stack-center
+      .stacked-center
+        h1 Nightwatch Setup
+        pre
+          code.language-javascript.
+            var spawn = require('child_process').spawn;
+
+            gulp.task('test', ['selenium:start', 'serve'], function(done) {
+              var nw = spawn('./node_modules/.bin/nightwatch', [
+                '--config', 'test/nightwatch.conf.js'
+              ]);
+              nw.stdout.on('data', function(data) {
+                console.log(data.toString());
+              });
+              nw.stderr.on('data', function(data) {
+                console.log(data.toString());
+              });
+              nw.on('close', function(code) {
+                gutil.log('Nightwatch process exited with code', code);
+                if (seleniumProcess) {
+                  seleniumProcess.kill();
+                  seleniumProcess = null;
+                }
+                done();
+              });
+              nw.on('error', function(err) {
+                gutil.log('Failed to start Nightwatch process', err);
+              });
+            });
+  .ft-page(data-id="nightwatch-setup")
+    .stack-center
+      .stacked-center
+        h1 Nightwatch Config
+        pre
+          code.language-javascript.
+            module.exports = {
+              src_folders: 'test',
+              output_folder: false,
+              test_settings: {
+                default: {
+                  launch_url: 'http://localhost:8080/',
+                  filter: '*.spec.js',
+                  screenshots: {
+                    enabled: false,
+                    path: ''
+                  },
+                  desiredCapabilities: {
+                    browserName: 'chrome',
+                    javascriptEnabled: true,
+                    acceptSslCerts: true
+                  }
+                }
+              }
+            };
+  .ft-page(data-id="writing")
+    .stack-center
+      .stacked-center
+        h1 Writing Tests
+        ol.ft-fragment
+          li Navigate to a webpage.
+          li Locate an HTML element on the Web page.
+          li (optional) Perform actions on HTML elements, like a user would.
+          li Run assertions.
+        pre.ft-fragment
+          code.language-javascript.
+            module.exports = {
+              'Initial loading': function(browser) {
+                browser
+                  .init()
+                  .waitForElementVisible('div.flowtime', 1000)
+                  .assert.visible('h1')
+                  .assert.containsText('h1', 'Automate Your Browser Testing')
+                  .end();
+              }
+            };
+        // Basically interact with the page the way a user would.
+  .ft-page(data-id="example-run")
+    .stack-center
+      .stacked-center
+        video.stacked-center(src="video/talk-tests-1.mp4", controls)
+          Running initial talk tests
+  .ft-page(data-id="nightwatch-api")
+    .stack-center
+      .stacked-center
+        h1 Available Methods
+        p
+          | Check out the Nightwatch&nbsp;
+          a(href="http://nightwatchjs.org/api", target="_blank") API docs
+          | &nbsp;for details.
+.ft-section(data-id="cloud")
+  .ft-page(data-id="why")
+    .stack-center
+      .stacked-center
+        h1 Why The Cloud?
+        ul.ft-fragment
+          li Don't want to install all the browsers on every dev's machine.
+          li E2E tests are slower than unit tests.
+          li Want continuous integration (CI).
+  .ft-page(data-id="services")
+    .stack-center
+      .stacked-center
+        h1 Available Services
+        ul
+          li.ft-fragment.step
+            a(href="https://www.browserling.com/") Browserling
+          li.ft-fragment.step
+            a(href="https://www.browserstack.com/") BrowserStack
+          li.ft-fragment
+            a(href="http://saucelabs.com/") Sauce Labs
+          li.ft-fragment.step
+            a(href="https://testingbot.com/") TestingBot
+        // Manual testing as well as automated testing
+        // Might have some free tiers, but generally paid services
+        // Work with multiple languages
+        .ft-fragment
+          // nothing
+  .ft-page(data-id="saucelabs")
+    .stack-center
+      .stacked-center
+        h1 Sauce Labs in Nightwatch Config
+        pre
+          code.language-javascript.
+            module.exports = {
+              src_folders: 'test',
+              output_folder: false,
+              test_settings: {
+                default: {
+                  // ... same as before ...
+                },
+                saucelabs: {
+                  selenium_host: 'ondemand.saucelabs.com',
+                  selenium_port: 80,
+                  username: '${SAUCE_USER}',
+                  access_key: '${SAUCE_ACCESS_KEY}',
+                  silent: true,
+                  output: true,
+                  screenshots: {
+                    enabled: false,
+                    on_failure: true,
+                    path: ''
+                  },
+                  selenium: {
+                    start_process: false
+                  }
+                }
+              }
+            };
+  .ft-page(data-id="sauce-connect")
+    .stack-center
+      .stacked-center
+        h1 Sauce Connect
+        p.ft-fragment
+          blockquote Sauce Connect is a tunneling app that you set up in your local network that opens a secure connection between a Sauce Labs virtual machine running your browser tests, and an application or website you want to test that's on your local machine or behind a corporate firewall.
+        pre.ft-fragment
+          code.language-shell.
+            $ sc -u SAUCE_USERNAME -k SAUCE_ACCESS_KEY
+  .ft-page(data-id="sauce-connect-example")
+    .stack-center
+      .stacked-center
+        video.stacked-center(src="video/saucelabs.mp4", controls)
+          Example of running E2E tests in Sauce Labs
+        // Nightwatch & SauceLabs run tests in parallel, if specified multiple envs
+  .ft-page(data-id="jenkins")
+    .stack-center
+      .stacked-center
+        h1
+          a(href="https://wiki.jenkins-ci.org/display/JENKINS/Sauce+OnDemand+Plugin", target="_blank") Jenkins Plugin
+        img(src="img/saucelabs-jenkins-plugin.png", style={display: "inline-block", height: "25rem"})
+.ft-section(data-id="conclusion")
+  .ft-page(data-id="getting-started")
+    .stack-center
+      .stacked-center
+        h1 Getting Started
+        ul
+          li.ft-fragment Choose a testing framework that works for you.
+          // (Maybe your existing unit test framework?)
+          li.ft-fragment Start small -- major features & critical paths.
+          li.ft-fragment Start with the most important (or problematic) browsers.
+          li.ft-fragment As problems arise and are fixed, write a test for to watch for regressions.
+  .ft-page(data-id="more-info")
+    .stack-center
+      .stacked-center
+        h1 Thanks
+        p
+          a(src="https://github.com/eheikes/browser-testing-talk") github.com/eheikes/browser-testing-talk
+        p
+          a(src="twitter.com/ericheikes") @EricHeikes
