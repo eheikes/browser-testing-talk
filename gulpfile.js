@@ -1,6 +1,7 @@
 'use strict';
 
 var connect = require('connect');
+var correctLineEndings = require('gulp-line-ending-corrector');
 var ghPages = require('gulp-gh-pages');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -19,7 +20,7 @@ gulp.task('clean', function(done) {
 });
 
 gulp.task('build', ['clean'], function(done) {
-  return runSequence(['copy:assets', 'copy:flowtime', 'jade'], done);
+  return runSequence(['copy:assets', 'copy:flowtime', 'copy:fonts', 'jade'], done);
 });
 
 gulp.task('copy:assets', ['copy:images', 'copy:video', 'copy:css']);
@@ -36,13 +37,20 @@ gulp.task('copy:flowtime', function() {
     'assets/css/reset.css',
     'css/flowtime.css',
     'css/themes/default.css',
-    // fonts
-    'assets/fonts/*',
     // JS
     'assets/js/prism.js',
     'js/brav1toolbox.js',
     'js/flowtime.js',
   ], { base: 'node_modules/Flowtime.js', cwd: 'node_modules/Flowtime.js' })
+    .pipe(correctLineEndings())
+    .pipe(gulp.dest(buildPath));
+});
+
+gulp.task('copy:fonts', function() {
+  return gulp.src(
+    'assets/fonts/*',
+    { base: 'node_modules/Flowtime.js', cwd: 'node_modules/Flowtime.js' }
+  )
     .pipe(gulp.dest(buildPath));
 });
 
