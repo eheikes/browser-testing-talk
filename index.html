@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="End-to-end tests are an important part of a testing strategy and continuous integration. Find out how to automate your testing across multiple browsers on your machine and in the cloud.">
+    <title>Automate Your Browser Testing</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="css/flowtime.css">
+    <link rel="stylesheet" href="css/themes/default.css">
+    <link rel="stylesheet" href="assets/css/prism.css">
+    <link rel="stylesheet" href="css/talk.css">
+  </head>
+  <body>
+    <div class="flowtime">
+      <div data-id="intro" class="ft-section">
+        <div data-id="title" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1 class="bright">Automate Your Browser Testing</h1>
+            </div>
+          </div>
+        </div>
+        <div data-id="author" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>About Me</h1>
+              <div style="background-image:url('img/eric-heikes.jpg')" class="avatar"></div>
+            </div>
+          </div>
+        </div>
+        <div data-id="banno" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center"><img src="img/jha-logo.png" style="width:400px"></div>
+          </div>
+          <div class="stack-center ft-fragment"><img src="img/banno-header.png" class="stacked-center"></div>
+          <div class="stack-center ft-fragment shy"><img src="img/banno-marketing.png" class="stacked-center"></div>
+          <div class="stack-center ft-fragment shy"><img src="img/banno-people.png" class="stacked-center"></div>
+          <div class="stack-center ft-fragment shy"><img src="img/banno-content.png" class="stacked-center"></div>
+          <div class="stack-center ft-fragment shy"><img src="img/banno-support.png" class="stacked-center"></div>
+          <div class="stack-center ft-fragment shy"><img src="img/banno-reports.png" class="stacked-center"></div>
+          <div class="stack-center">
+            <div class="stacked-center"></div>
+          </div>
+          <!--
+          mainly DSM & CF, but distributed team
+          Mention hiring -- front-end, back-end DS, iOS & Android native, infrastructure/devops, product -- smart people
+          -->
+        </div>
+      </div>
+      <div data-id="problem" class="ft-section">
+        <div data-id="sucks" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Writing tests sucks...</h1>
+              <div class="ft-fragment">
+                <p>Writing tests is a chore.</p>
+                <p>It's hard to get developers to write tests, <br> especially when starting a new project or feature.</p>
+              </div>
+            </div>
+          </div>
+          <!--Writing tests is a chore.
+          -->
+          <!--
+          It's *very* hard to get developers to write tests for their code
+          (at least in my experience).
+          -->
+          <!--
+          Especially when you're starting a new project, or a customer is asking
+          for a new feature, and you want to get to MVP as soon as possible.
+          -->
+        </div>
+        <div data-id="necessary" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>...but it's still better than no tests.</h1>
+              <ul class="ft-fragment">
+                <li>You want your website to be available and working for you customers.</li>
+                <li>You don't want to be caught by surprise.</li>
+                <li>But you don't want to spend time manually testing your site.</li>
+              </ul>
+            </div>
+          </div>
+          <!--*But* everyone agrees it should be done.
+          -->
+          <!--
+          Whether you have a web app, or a Wordpress site, or even just a static
+          informational website, you want to make sure that it's available
+          and it works for your customers.
+          -->
+          <!--
+          You don't want to find out that a change you made last week broke
+          your e-commerce site and nobody has been able to checkout since.
+          -->
+          <!--
+          But you also don't want to spend time pulling up your site
+          after every change and running through all the affected workflows
+          and features in various browsers. That's very tedious and error-prone.
+          -->
+        </div>
+        <div data-id="painless" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>So how can we make this as painless as possible?</h1>
+              <div class="column-container">
+                <div class="column"><img src="img/sad-cat.jpg" class="ft-fragment"></div>
+                <div class="column"><img src="img/good-news.jpg" class="ft-fragment"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Bad news: You still have to write tests.-->
+          <!-- Good news: The computer does all the grunt work for you.-->
+        </div>
+        <div data-id="example" class="ft-page">
+          <div class="stack-center">
+            <h1 class="stacked-center">A Quick Story</h1>
+            <!--
+            When I started at Banno, the initial administrative apps had been built,
+            but there wasn't much in the way of front-end testing.
+            -->
+          </div>
+          <div class="stack-center ft-fragment shy"><img src="img/aps-repo.png" class="stacked-center">
+            <!--
+            The main library that was shared among the apps, with the common services
+            and components, had almost no test coverage.
+            -->
+          </div>
+          <div class="stack-center ft-fragment shy"><img src="img/aps-unit-tests.png" class="stacked-center">
+            <!--
+            Over the next 6-12 months or so, we wrote unit tests and end-to-end tests
+            for this library.
+            Nowadays it has almost full coverage.
+            -->
+          </div>
+          <div class="stack-center ft-fragment shy">
+            <video src="video/aps-e2e-tests.mp4" controls class="stacked-center">
+              <Example>of running Protractor E2E tests</Example>
+            </video>
+            <!--
+            So now we can run 342 unit tests in under 10 seconds, and all our E2E tests in
+            about 5 mins.
+            -->
+            <!--
+            Was it a pain to write? Yes. But now every time something is added or changed,
+            it's just another small change to the tests.
+            And our confidence that new code won't cause regressions is HUGE.
+            -->
+          </div>
+        </div>
+      </div>
+      <div data-id="tooling" class="ft-section">
+        <div data-id="nomenclature" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Testing Spectrum</h1>
+              <ul>
+                <li>unit testing</li>
+                <li>integration testing</li>
+                <li>acceptance testing</li>
+                <li>end-to-end (E2E) testing</li>
+              </ul>
+              <!--
+              The nomenclature for the different types of testing seems to vary depending
+              where you are,
+              but in this talk I'm going to concentrate on what we call "end-to-end" testing.
+              -->
+              <!--
+              Unit testing is testing the code at a very low level, where you know and have
+              access to the internals of the system.
+              Unit testing, I think, is relatively straightforward and easy to set up.
+              -->
+              <!--
+              End-to-end testing is testing at the browser level.
+              Where your tests see the same thing a human user would see, in a real browser.
+              Because this is at this high level, E2E tests typically test actual workflows
+              & critical paths.
+              -->
+              <!--
+              E2E tests, I think, require a bit more work to set up and get running.
+              Also, at this high level, you're able to see browser quirks in all their glory
+              (events, visual rendering, etc).
+              -->
+              <!--You should still unit testing & the others, but I'm going to focus on E2E testing.
+              -->
+            </div>
+          </div>
+        </div>
+        <div data-id="selenium" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center"><img src="img/selenium-logo.png" style="display:inline-block">
+              <h1>Selenium WebDriver</h1>
+              <!-- is actually 2 merged projects-->
+              <p class="ft-fragment">A common interface for communicating with browsers</p>
+              <!-- as you saw, just starts an instance of the browser and runs your tests using the WebDriver API.-->
+              <ul class="ft-fragment">
+                <li>Runs on Windows/Mac/Linux</li>
+                <li>Write in Java, C#, Perl, PHP, Python, Ruby, and more</li>
+                <li>Supports Firefox, Chrome, Opera, Safari 5.1+, IE7-11, Edge</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div data-id="frameworks" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Testing Frameworks</h1>
+              <div class="column-container">
+                <div class="column">
+                  <ul>
+                    <li class="ft-fragment step"><a href="https://github.com/paypal/nemo">Nemo</a></li>
+                    <li class="ft-fragment"><a href="http://nightwatchjs.org/">Nightwatch.js</a></li>
+                    <li class="ft-fragment"><a href="https://angular.github.io/protractor/">Protractor</a></li>
+                    <li class="ft-fragment step"><a href="http://webdriver.io/">webdriver.io</a></li>
+                    <li class="ft-fragment step"><a href="https://jnicklas.github.io/capybara/">Capybara</a></li>
+                    <li class="ft-fragment step">JUnit, TestNG</li>
+                    <li class="ft-fragment step">NUnit</li>
+                    <li class="ft-fragment step"><a href="https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/">Selenium IDE</a></li>
+                  </ul>
+                </div>
+                <div class="column ft-fragment step"><img src="img/selenium-ide.gif"></div>
+                <div class="ft-fragment">
+                  <!-- nothing-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Protractor & Nightwatch I've used for personal & professional projects-->
+        </div>
+        <div data-id="nightwatch" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center"><img src="img/nightwatch-logo.png" style="display:inline-block">
+              <h1>Nightwatch</h1>
+              <!-- Why NW?-->
+              <ul>
+                <li>NodeJS</li>
+                <li>All-in-one</li>
+                <li>Mature</li>
+                <li>Fairly popular</li>
+                <li>Decent documentation</li>
+                <li>Easy-ish to get started</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Any tests is better than no test. Choose a tool that looks good and start.-->
+          <!-- Testing tools tend to follow same pattern.-->
+        </div>
+      </div>
+      <div data-id="e2e" class="ft-section">
+        <div data-id="browsers" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Step 1</h1>
+              <p class="ft-fragment">Install browsers you want to test against.</p>
+            </div>
+          </div>
+        </div>
+        <div data-id="selenium-setup" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Selenium Setup</h1>
+              <pre><code class="language-javascript">var selenium = require('selenium-standalone');
+
+var seleniumProcess = null; // for tracking the selenium process
+
+gulp.task('selenium:install', function(done) {
+  selenium.install(done);
+});
+
+gulp.task('selenium:start', ['selenium:install'], function(done) {
+  selenium.start(function(err, process) {
+    seleniumProcess = err ? null : process;
+    done();
+  });
+});</code></pre>
+            </div>
+          </div>
+        </div>
+        <div data-id="nightwatch-setup" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Nightwatch Setup</h1>
+              <pre><code class="language-javascript">var spawn = require('child_process').spawn;
+
+gulp.task('test', ['selenium:start', 'serve'], function(done) {
+  var nw = spawn('./node_modules/.bin/nightwatch', [
+    '--config', 'test/nightwatch.conf.js'
+  ]);
+  nw.stdout.on('data', function(data) {
+    console.log(data.toString());
+  });
+  nw.stderr.on('data', function(data) {
+    console.log(data.toString());
+  });
+  nw.on('close', function(code) {
+    gutil.log('Nightwatch process exited with code', code);
+    if (seleniumProcess) {
+      seleniumProcess.kill();
+      seleniumProcess = null;
+    }
+    done();
+  });
+  nw.on('error', function(err) {
+    gutil.log('Failed to start Nightwatch process', err);
+  });
+});</code></pre>
+            </div>
+          </div>
+        </div>
+        <div data-id="nightwatch-setup" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Nightwatch Config</h1>
+              <pre><code class="language-javascript">module.exports = {
+  src_folders: 'test',
+  output_folder: false,
+  test_settings: {
+    default: {
+      launch_url: 'http://localhost:8080/',
+      filter: '*.spec.js',
+      screenshots: {
+        enabled: false,
+        path: ''
+      },
+      desiredCapabilities: {
+        browserName: 'chrome',
+        javascriptEnabled: true,
+        acceptSslCerts: true
+      }
+    }
+  }
+};</code></pre>
+            </div>
+          </div>
+        </div>
+        <div data-id="writing" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Writing Tests</h1>
+              <ol class="ft-fragment">
+                <li>Navigate to a webpage.</li>
+                <li>Locate an HTML element on the Web page.</li>
+                <li>(optional) Perform actions on HTML elements, like a user would.</li>
+                <li>Run assertions.</li>
+              </ol>
+              <pre class="ft-fragment"><code class="language-javascript">module.exports = {
+  'Initial loading': function(browser) {
+    browser
+      .init()
+      .waitForElementVisible('div.flowtime', 1000)
+      .assert.visible('h1')
+      .assert.containsText('h1', 'Automate Your Browser Testing')
+      .end();
+  }
+};</code></pre>
+              <!-- Basically interact with the page the way a user would.-->
+            </div>
+          </div>
+        </div>
+        <div data-id="example-run" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <video src="video/talk-tests-1.mp4" controls class="stacked-center">
+                <Running>initial talk tests</Running>
+              </video>
+            </div>
+          </div>
+        </div>
+        <div data-id="nightwatch-api" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Available Methods</h1>
+              <p>Check out the Nightwatch&nbsp;<a href="http://nightwatchjs.org/api" target="_blank">API docs</a>&nbsp;for details.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-id="cloud" class="ft-section">
+        <div data-id="why" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Why The Cloud?</h1>
+              <ul class="ft-fragment">
+                <li>Don't want to install all the browsers on every dev's machine.</li>
+                <li>E2E tests are slower than unit tests.</li>
+                <li>Want continuous integration (CI).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div data-id="services" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Available Services</h1>
+              <ul>
+                <li class="ft-fragment step"><a href="https://www.browserling.com/">Browserling</a></li>
+                <li class="ft-fragment step"><a href="https://www.browserstack.com/">BrowserStack</a></li>
+                <li class="ft-fragment"><a href="http://saucelabs.com/">Sauce Labs</a></li>
+                <li class="ft-fragment step"><a href="https://testingbot.com/">TestingBot</a></li>
+              </ul>
+              <!-- Manual testing as well as automated testing-->
+              <!-- Might have some free tiers, but generally paid services-->
+              <!-- Work with multiple languages-->
+              <div class="ft-fragment">
+                <!-- nothing-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-id="saucelabs" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Sauce Labs in Nightwatch Config</h1>
+              <pre><code class="language-javascript">module.exports = {
+  src_folders: 'test',
+  output_folder: false,
+  test_settings: {
+    default: {
+      // ... same as before ...
+    },
+    saucelabs: {
+      selenium_host: 'ondemand.saucelabs.com',
+      selenium_port: 80,
+      username: '${SAUCE_USER}',
+      access_key: '${SAUCE_ACCESS_KEY}',
+      silent: true,
+      output: true,
+      screenshots: {
+        enabled: false,
+        on_failure: true,
+        path: ''
+      },
+      selenium: {
+        start_process: false
+      }
+    }
+  }
+};</code></pre>
+            </div>
+          </div>
+        </div>
+        <div data-id="sauce-connect" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Sauce Connect</h1>
+              <p class="ft-fragment">
+                <blockquote>Sauce Connect is a tunneling app that you set up in your local network that opens a secure connection between a Sauce Labs virtual machine running your browser tests, and an application or website you want to test that's on your local machine or behind a corporate firewall.</blockquote>
+              </p>
+              <pre class="ft-fragment"><code class="language-shell">$ sc -u SAUCE_USERNAME -k SAUCE_ACCESS_KEY</code></pre>
+            </div>
+          </div>
+        </div>
+        <div data-id="sauce-connect-example" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <video src="video/saucelabs.mp4" controls class="stacked-center">
+                <Example>of running E2E tests in Sauce Labs</Example>
+              </video>
+              <!-- Nightwatch & SauceLabs run tests in parallel, if specified multiple envs-->
+            </div>
+          </div>
+        </div>
+        <div data-id="jenkins" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1><a href="https://wiki.jenkins-ci.org/display/JENKINS/Sauce+OnDemand+Plugin" target="_blank">Jenkins Plugin</a></h1><img src="img/saucelabs-jenkins-plugin.png" style="display:inline-block;height:25rem">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-id="conclusion" class="ft-section">
+        <div data-id="getting-started" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Getting Started</h1>
+              <ul>
+                <li class="ft-fragment">Choose a testing framework that works for you.</li>
+                <!-- (Maybe your existing unit test framework?)-->
+                <li class="ft-fragment">Start small -- major features & critical paths.</li>
+                <li class="ft-fragment">Start with the most important (or problematic) browsers.</li>
+                <li class="ft-fragment">As problems arise and are fixed, write a test for to watch for regressions.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div data-id="more-info" class="ft-page">
+          <div class="stack-center">
+            <div class="stacked-center">
+              <h1>Thanks</h1>
+              <p><a src="https://github.com/eheikes/browser-testing-talk">github.com/eheikes/browser-testing-talk</a></p>
+              <p><a src="twitter.com/ericheikes">@EricHeikes</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/brav1toolbox.js"></script>
+    <script src="js/flowtime.js"></script>
+    <script src="assets/js/prism.js"></script>
+    <script>
+      Flowtime.showProgress(true);
+      Flowtime.start();
+    </script>
+  </body>
+</html>

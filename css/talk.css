@@ -1,0 +1,32 @@
+.avatar {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  width: 8rem;
+  height: 8rem;
+}
+
+.banno-logo {
+  font-family: "Gotham A", "Gotham B", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 5.5rem;
+  margin: 2.5rem 0;
+}
+
+h1.bright {
+  color: #fff
+}
+
+.column-container {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.column-container > .column {
+  width: 50%;
+  padding: 1em;
+}
