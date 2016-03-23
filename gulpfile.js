@@ -23,11 +23,16 @@ gulp.task('build', ['clean'], function(done) {
   return runSequence(['copy:assets', 'copy:flowtime', 'copy:fonts', 'jade'], done);
 });
 
-gulp.task('copy:assets', ['copy:images', 'copy:video', 'copy:css']);
+gulp.task('copy:assets', ['copy:favicon', 'copy:images', 'copy:video', 'copy:css']);
 
 gulp.task('copy:css', function() {
   return gulp.src('talk.css')
     .pipe(gulp.dest(buildPath + '/css'));
+});
+
+gulp.task('copy:favicon', function() {
+  return gulp.src('img/favicon.ico')
+    .pipe(gulp.dest(buildPath));
 });
 
 gulp.task('copy:flowtime', function() {
@@ -55,7 +60,10 @@ gulp.task('copy:fonts', function() {
 });
 
 gulp.task('copy:images', function() {
-  return gulp.src('img/*')
+  return gulp.src([
+    'img/*',
+    '!img/favicon.ico'
+  ])
     .pipe(gulp.dest(buildPath + '/img'));
 });
 
