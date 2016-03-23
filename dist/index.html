@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/talk.css">
   </head>
   <body>
-    <div class="flowtime">
+    <div class="flowtime ft-cross">
       <div data-id="intro" class="ft-section">
         <div data-id="title" class="ft-page">
           <div class="stack-center">
@@ -487,6 +487,7 @@ gulp.task('test', ['selenium:start', 'serve'], function(done) {
     <script src="assets/js/prism.js"></script>
     <script>
       Flowtime.showProgress(true);
+      Flowtime.clicker(true);
       Flowtime.start();
     </script>
   </body>
