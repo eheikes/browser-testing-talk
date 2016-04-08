@@ -2,7 +2,7 @@
 
 > End-to-end tests are an important part of a testing strategy and continuous integration. Find out how to automate your testing across multiple browsers on your machine and in the cloud.
 
-This was a talk given at the [2016 Des Moines Web Geeks Social Event](http://www.dsmwebgeeks.com/2016/03/12/annual-social-event/).
+This was a talk given at the [2016 Des Moines Web Geeks Social Event](http://www.dsmwebgeeks.com/2016/03/12/annual-social-event/). A video and transcript can be found at [ericheikes.com/automate-your-browser-testing](http://ericheikes.com/automate-your-browser-testing/).
 
 The presentation can be viewed at [eheikes.github.io/browser-testing-talk](http://eheikes.github.io/browser-testing-talk/), or from the [`dist` folder](dist/) in this repository.
 
